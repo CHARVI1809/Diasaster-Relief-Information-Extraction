@@ -1,122 +1,172 @@
-🌍 Disaster Relief Information Extraction using NLP
-📌 Overview
+# Disaster Relief Information Extraction Using Natural Language Processing and Machine Learning
 
-During natural disasters, social media platforms like Twitter generate massive amounts of real-time information. However, not all tweets are relevant for emergency response.
+## Abstract
 
-This project focuses on binary classification of disaster-related tweets into:
+During natural disasters, social media platforms generate large volumes of real-time textual data. While this data contains potentially critical information for emergency response, a significant portion is noisy or irrelevant. Efficient identification of actionable information is therefore essential.
 
-On-Topic (relevant disaster information)
+This study presents a supervised machine learning framework for binary classification of disaster-related tweets into **On-Topic** (relevant) and **Off-Topic** (irrelevant) categories. Traditional Natural Language Processing (NLP) techniques combined with classical machine learning classifiers are evaluated to determine the most effective approach for disaster information filtering.
 
-Off-Topic (irrelevant content)
+---
 
-The system applies Natural Language Processing (NLP) and Machine Learning (ML) techniques to automatically filter useful disaster information, supporting faster and more effective relief efforts.
-
-📄 Research Paper
+## Research Paper
 
 This repository accompanies the research paper:
 
-“Disaster Relief Information Extraction Using Natural Language Processing and Machine Learning”
+**“Disaster Relief Information Extraction Using Natural Language Processing and Machine Learning”**
 
-📁 Available in the paper/ directory.
+📁 Available inside the `paper/` directory.
 
-📂 Dataset
+---
 
-Dataset: CrisisLexT6
+## 1. Introduction
 
-Size: 60,000 tweets
+Rapid access to reliable information is crucial during disaster response operations. Social media platforms such as Twitter provide immediate, crowd-sourced updates during crises. However, the unstructured and high-volume nature of such data necessitates automated filtering mechanisms.
 
-Classes:
+This project investigates the effectiveness of:
 
-On-Topic: 32,462
+- Classical text preprocessing techniques
+- Sparse vector representations (BoW and TF-IDF)
+- Multiple supervised classification algorithms
 
-Off-Topic: 27,420
+The objective is to determine which model-feature combination achieves the highest classification performance for disaster tweet filtering.
 
-⚠️ Due to privacy and licensing restrictions, the dataset is not included in this repository.
-Please download it from the original CrisisLexT6 source and place it in the data/ directory.
+---
 
-🛠️ Methodology
-🔹 Text Preprocessing
 
-Lowercasing
+## 2. Dataset
 
-Stopword removal
+- **Dataset:** CrisisLexT6  
+- **Total Tweets:** ~60,000  
+- **Class Distribution:**
+  - On-Topic: 32,462  
+  - Off-Topic: 27,420  
 
-Punctuation & special character removal
+The dataset consists of labeled tweets collected during six major disaster events.
 
-Tokenization
+⚠️ Due to licensing and privacy constraints, the dataset is not included in this repository.  
+Users must download the dataset from the official CrisisLexT6 source and place it inside the `data/` directory.
 
-🔹 Feature Extraction
+---
 
-Bag of Words (BoW)
+## 3. Methodology
 
-Term Frequency–Inverse Document Frequency (TF-IDF)
+### 3.1 Text Preprocessing
 
-🔹 Machine Learning Models
+The following preprocessing steps were applied:
 
-Support Vector Machine (SVM)
+- Lowercasing
+- Removal of stopwords
+- Removal of punctuation and special characters
+- Tokenization
 
-Random Forest
+These steps reduce noise and improve feature quality.
 
-Logistic Regression
+---
 
-Naïve Bayes
+### 3.2 Feature Extraction
 
-K-Nearest Neighbors (KNN)
+Two sparse vector representations were evaluated:
 
-Decision Tree
+- **Bag of Words (BoW)**
+- **Term Frequency – Inverse Document Frequency (TF-IDF)**
 
-📊 Results Summary
-🔸 Best Performing Models
+Both approaches transform textual data into high-dimensional numerical feature vectors suitable for machine learning classifiers.
 
-BoW: Logistic Regression (94.82%)
+---
 
-TF-IDF: SVM (94.65%)
+### 3.3 Classification Algorithms
 
-SVM, Random Forest, and Logistic Regression consistently outperformed other classifiers, while KNN showed lower performance due to high-dimensional text data.
+The following supervised learning models were implemented and evaluated:
 
-Detailed metrics and comparison plots are available in the results/ directory.
+- Support Vector Machine (SVM)
+- Logistic Regression
+- Random Forest
+- Naïve Bayes
+- Decision Tree
+- K-Nearest Neighbors (KNN)
 
-📁 Project Structure
+Model performance was compared using accuracy and standard classification metrics.
+
+---
+
+## 4. Experimental Results
+
+### Best Performing Configurations
+
+| Feature Representation | Best Model           | Accuracy |
+|------------------------|---------------------|----------|
+| Bag of Words           | Logistic Regression | 94.82%   |
+| TF-IDF                 | Support Vector Machine | 94.65% |
+
+### Key Findings
+
+- Linear classifiers (SVM and Logistic Regression) performed consistently well.
+- Sparse representations are highly effective for short-text classification.
+- KNN demonstrated comparatively lower performance due to high-dimensional feature space.
+- Classical machine learning approaches remain competitive for binary tweet classification tasks.
+
+Detailed performance metrics and comparative visualizations are available in the `results/` directory.
+
+---
+
+## 5. Project Structure
+
+```
 ├── notebook/
+│ └── Disaster_relief_info_extraction.ipynb
 ├── data/
 ├── results/
 ├── paper/
 ├── requirements.txt
-├── README.md
+└── README.md
+```
+---
 
-⚙️ How to Run
+## 6. Reproducibility
 
-Install dependencies
+The experiments presented in this study can be reproduced using the following steps.
 
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/CHARVI1809/Disaster-Relief-Information-Extraction.git
+```
+
+### Step 2: Install Dependencies
+```bash
 pip install -r requirements.txt
+```
+ 
+### Step 3: Run the Notebook
+```bash
+notebook/Disaster_relief_info_extraction.ipynb
+```
+---
 
+## 7. Future Work
 
-Open the notebook
+Future research directions include:
 
-jupyter notebook
+- Integration of deep learning architectures (LSTM, GRU, Transformer-based models)
+- Incorporation of contextual embeddings (Word2Vec, GloVe, BERT)
+- Real-time streaming tweet classification systems
+- Multilingual disaster tweet analysis
+- Deployment as an emergency response decision-support system
 
+---
+## 8. Authors
 
-Run all cells in Disaster_relief_info_extraction.ipynb
+**Charvi Gupta**  
+B.Tech Computer Science and Engineering  
+Manipal University Jaipur  
 
-🔮 Future Scope
+**Ananya Srivastava**  
+B.Tech Computer Science and Engineering  
+Manipal University Jaipur  
 
-Deep learning models (LSTM, BERT)
+## 9. License
 
-Real-time tweet classification
+This repository is intended for academic and research purposes only.
 
-Multilingual disaster data
+---
 
-Deployment as a web-based system
-
-👩‍💻 Authors
-
-📍Charvi Gupta
-  B.Tech CSE, Manipal University Jaipur
-
-📍Ananya Srivastava
-  B.Tech CSE, Manipal University Jaipur
-
-
-📜 License
-
-This project is for academic and research purposes.
